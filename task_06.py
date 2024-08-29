@@ -1,27 +1,13 @@
 class WrongNumberOfPlayersError(Exception):
     """Если количество игроков больше 2."""
 
-    def __init__(self, key):
-        """__init__."""
-        self.key = key
-        self.message = f"количество игроков не равно 2: {key}"
-
-    def __str__(self):
-        """__str__."""
-        return self.message
+    pass
 
 
 class NoSuchStrategyError(Exception):
     """Если ход игроков отличается от 'R', 'P' или 'S'."""
 
-    def __init__(self, key):
-        """__init__."""
-        self.key = key
-        self.message = f"Нет {key} хода в игре"
-
-    def __str__(self):
-        """__str__."""
-        return self.message
+    pass
 
 
 def rps_game_winner(arr):
@@ -31,10 +17,10 @@ def rps_game_winner(arr):
     где P - бумага, S - ножницы, R - камень.
     """
     if len(arr) != 2:
-        raise WrongNumberOfPlayersError(len(arr))
+        raise WrongNumberOfPlayersError()
     for val in arr:
         if val[1] not in ["P", "S", "R"]:
-            raise NoSuchStrategyError(val[1])
+            raise NoSuchStrategyError()
     pair_val = dict(
         P="R",
         S="P",
