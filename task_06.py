@@ -30,22 +30,19 @@ def rps_game_winner(arr):
     [["player1", "P"], ["player2", "S"] ],
     где P - бумага, S - ножницы, R - камень.
     """
-    try:
-        if len(arr) != 2:
-            raise WrongNumberOfPlayersError(len(arr))
-        for val in arr:
-            if val[1] not in ["P", "S", "R"]:
-                raise NoSuchStrategyError(val[1])
-        pair_val = dict(
-            P="R",
-            S="P",
-            R="S",
-        )
-        if arr[0][1] == pair_val[arr[1][1]]:
-            return f"{arr[1][0]} {arr[1][1]}"
-        elif arr[1][1] == pair_val[arr[0][1]]:
-            return f"{arr[0][0]} {arr[0][1]}"
-        else:
-            return f"{arr[0][0]} {arr[0][1]}"
-    except Exception as error:
-        return error
+    if len(arr) != 2:
+        raise WrongNumberOfPlayersError(len(arr))
+    for val in arr:
+        if val[1] not in ["P", "S", "R"]:
+            raise NoSuchStrategyError(val[1])
+    pair_val = dict(
+        P="R",
+        S="P",
+        R="S",
+    )
+    if arr[0][1] == pair_val[arr[1][1]]:
+        return f"{arr[1][0]} {arr[1][1]}"
+    elif arr[1][1] == pair_val[arr[0][1]]:
+        return f"{arr[0][0]} {arr[0][1]}"
+    else:
+        return f"{arr[0][0]} {arr[0][1]}"

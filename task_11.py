@@ -1,24 +1,31 @@
 class Dessert:
     """Класс Dessert c геттерами и сеттерами name и calories"""
 
-    def __init__(self, name=None, calories=None):
+    def __init__(self, name: str = "", calories: int = 0):
         self.__name = name
         self.__calories = calories
 
-    def set_name(self, name):
-        self.__name = name
-
-    def set_calories(self, calories):
-        self.__calories = calories
-
-    def get_name(self):
+    @property
+    def name(self):
         return self.__name
 
-    def get_calories(self):
+    @name.setter
+    def name(self, name):
+        self.__name = name
+
+    @property
+    def calories(self):
         return self.__calories
 
-    def is_healthy(self):
-        return True if self.__calories < 200 else False
+    @calories.setter
+    def calories(self, calories):
+        self.__calories = calories
 
-    def is_delicious(self):
+    def is_healthy(self) -> bool:
+        if type(self.__calories) is not int:
+            return False
+        return self.__calories < 200
+
+    @staticmethod
+    def is_delicious() -> bool:
         return True
